@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  padding: 10px 20px;
+}
+header input {
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+header div {
+  display: flex;
+  gap: 10px;
+}
+
+header div button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}
+
+header div button:nth-child(1) {
+  background-color: black;
+}
+header div button:nth-child(2) {
+  background-color: blue;
+}
+header div button:nth-child(3) {
+  background-color: red;
+}
+.category-wrapper {
+  padding: 40px;
+}
+.categories {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+.category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+}
+
+.category img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.category span {
+  position: absolute;
+  bottom: 10px;
+  background-color: white;
+  text-align: center;
+  width: 70%;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* Product Section */
+.product-wrapper {
+  padding: 40px;
+}
+.products {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.product {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+.product-action {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
+}
+.product-action button {
+  background-color: rgb(255, 228, 0.1);
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Modal > Basket */
+.modal-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  display: none;
+  place-items: center;
+  background-color: rgba(128, 128, 128, 0.414);
+  z-index: 1000;
+}
+.modal {
+  width: 45%;
+  height: 65%;
+  background-color: white;
+  border-radius: 10px;
+}
+.modal img {
+  cursor: pointer;
+}
+.active {
+  display: grid;
+}
