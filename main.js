@@ -3,6 +3,8 @@ const productList = document.querySelector(".products");
 const modal = document.querySelector(".modal-wrapper");
 const openBtn = document.querySelector("#open-btn");
 const closeBtn = document.querySelector("#close-btn");
+const modalList = document.querySelector(".modal-list");
+const modalInfo = document.querySelector("#modal-info");
 
 //işimizi garantiye alır. HTML dosyası geldikten sonra kendisini çalıştırır
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,6 +59,7 @@ function fetchProducts() {
 }
 
 let basket = [];
+let total = 0;
 
 //Operation Of Adding to Basket
 function addToBasket(product) {
@@ -70,7 +73,6 @@ function addToBasket(product) {
     // eleman sepette yoksa sepete ekle
     basket.push(product);
   }
-  console.log(basket);
 }
 
 // Basket Events
@@ -78,10 +80,50 @@ function addToBasket(product) {
 // Open and close
 openBtn.addEventListener("click", () => {
   modal.classList.add("active");
+  //sepetin içine ürünleri listeleme
+  addList();
+  //toplam bilgisini güncelleme
+  modalInfo.innerText = total;
 });
 closeBtn.addEventListener("click", () => {
   modal.classList.remove("active");
+  //speti kapatınca içerisini temizleme
+  modalList.innerHTML = "";
+  //toplam değerini sıfıtrlama
+  total = 0;
 });
+
+//Listing to basket
+function addList() {
+  basket.forEach((product) => {
+    const listItem = document.createElement("div");
+    listItem.classList.add("list-item");
+    listItem.innerHTML = `
+    <img src="${product.img}" alt="" />
+    <h2>${product.title}</h2>
+    <h2 class ="price">${product.price} $</h2>
+    <p>amount:${product.amount}</p>
+    <button id="del" onclick = "deleteItem({id:${product.id},price:'${product.price}',amount:'${product.amount}'})">Delete</button>
+    `;
+    modalList.appendChild(listItem);
+
+    //total değikenini güncelleme
+    total += product.price * product.amount;
+  });
+}
+//deleting from basket array function
+function deleteItem(deletingItem) {
+  basket = basket.filter((i) => i.id !== deletingItem.id);
+  //subtracting the deketed element from total
+  total -= deletingItem.price * deletingItem.amount;
+
+  modalInfo.innerText = total;
+}
+//removing the deleted element from html
+modalList.addEventListener("click", (e) => {
+  if (e.target.id === "del") e.target.parentElement.remove();
+});
+
 //eğer dışarı tıklanınca kapatmak istersek
 // clasListlerde contains kullan
 modal.addEventListener("click", (e) => {
