@@ -47,10 +47,18 @@ function fetchProducts() {
         productDiv.innerHTML = `
       <img src="${product.images[0]}" alt="" />
             <p>${product.title}</p>
-            <p>${product.category.name}</p>
+            <p>${
+              product.category.name === "Clothes018"
+                ? "Clothes"
+                : product.category.name
+            }</p>
             <div class="product-action">
               <p>${product.price} $</p>
-              <button onclick = "addToBasket({id:${product.id},title:'${product.title}',price:${product.price},img:'${product.images[0]}',amount:1})">Add to basket</button>
+              <button onclick = "addToBasket({id:${product.id},title:'${
+          product.title
+        }',price:${product.price},img:'${
+          product.images[0]
+        }',amount:1})">Add to basket</button>
             </div> `;
         productList.appendChild(productDiv);
       })
@@ -116,7 +124,6 @@ function deleteItem(deletingItem) {
   basket = basket.filter((i) => i.id !== deletingItem.id);
   //subtracting the deketed element from total
   total -= deletingItem.price * deletingItem.amount;
-
   modalInfo.innerText = total;
 }
 //removing the deleted element from html
