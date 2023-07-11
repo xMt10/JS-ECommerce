@@ -6,7 +6,5 @@
     <li>CSS3</li>
     <li>JavaScript</li>
 </ul>
-<h2>About E-Commerce Website </h2>
-<p>My expense calculator app has been made that you can control your expensesin a simpler way. You can see Paid, Unpaid or all together. You can also delete the elements you want to delete and subtract them from the total.</p>
-<a href="">preview</a><br><br>
-<img src="e-commerce.gif" alt="">
+<a href="https://ecommerceall.netlify.app/">preview</a><br><br>
+<img src="e-commercee.gif" alt="">
